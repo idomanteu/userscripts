@@ -25,3 +25,5 @@ Enable debug logging by running this in the browser console:
 ```javascript
 window.BPTF_COPY_DEBUG = true;
 ```
+
+Made by loz + Claude Code
