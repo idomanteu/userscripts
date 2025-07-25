@@ -2,12 +2,12 @@
 
 A Tampermonkey userscript that adds one-click copy functionality for TF2 item names on backpack.tf.
 
-![Stats](img_1.png) | ![Classifieds](img_2.png)
+![Stats](img_1.png)
 
 ## Installation
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) browser extension
-2. Click [here to install the script](https://raw.githubusercontent.com/idomanteu/userscripts/refs/heads/main/bp_item_name_copy.js) or copy the code manually
+2. Click [here to install the script](bp_item_name_copy.user.js) or copy the code manually
 3. The script automatically activates on all backpack.tf pages
 
 ## Features
