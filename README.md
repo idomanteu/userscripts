@@ -7,7 +7,7 @@ A Tampermonkey userscript that adds one-click copy functionality for TF2 item na
 ## Installation
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) browser extension
-2. Click [here to install the script](backpack_tf_copy.js) or copy the code manually
+2. Click [here to install the script](bp_item_name_copy.js) or copy the code manually
 3. The script automatically activates on all backpack.tf pages
 
 ## Features
