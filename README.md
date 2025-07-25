@@ -2,8 +2,6 @@
 
 A Tampermonkey userscript that adds one-click copy functionality for TF2 item names on backpack.tf.
 
-![Stats](img_1.png)
-
 ## Installation
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) browser extension
@@ -17,6 +15,8 @@ Click any of these elements on backpack.tf to instantly copy the item name to yo
 - **Listing titles** - Click the item name in buy/sell listings
 - **Stats page headers** - Click the main item title on item statistics pages
 - **Hover popovers** - Click item names in tooltip popovers that appear on hover
+
+![Stats](img_1.png) | ![Classifieds](img_2.png)
 
 ## Debug Mode
 
