@@ -1,4 +1,4 @@
-# Backpack.tf Item Name Copy
+# Copy Item Names from Backpack.tf in one-click
 
 A Tampermonkey userscript that adds one-click copy functionality for TF2 item names on backpack.tf.
 
