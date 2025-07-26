@@ -1,8 +1,10 @@
 // ==UserScript==
-// @name         Copy item names from Backpack.tf in one-click
+// @name         Backpack.tf Item Name Copy
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Add copy functionality for item names on backpack.tf - click titles, stats headers, and popover titles to copy item names
+// @updateURL    https://github.com/idomanteu/userscripts/raw/main/bp_item_name_copy.user.js
+// @downloadURL  https://github.com/idomanteu/userscripts/raw/main/bp_item_name_copy.user.js
 // @author       loz
 // @match        https://backpack.tf/*
 // @grant        none
@@ -47,18 +49,18 @@
             transition: all 0.1s ease;
             position: relative;
         }
-        
+
         .tf-clickable-copy:hover {
             opacity: 0.8;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
         }
-        
+
         .tf-clickable-copy--success {
             background-color: rgba(0, 150, 0, 0.3) !important;
             transition: all 0.1s ease !important;
         }
-        
+
         .tf-clickable-copy--error {
             background-color: rgba(150, 0, 0, 0.3) !important;
             transition: all 0.1s ease !important;
@@ -150,9 +152,7 @@
 
     // Target the h5 title elements directly instead of button containers
     const allTitleElements = document.querySelectorAll(SELECTORS.bptfListings);
-    const titleElements = Array.from(allTitleElements).filter(
-      (el) => !processedElements.has(el)
-    );
+    const titleElements = Array.from(allTitleElements).filter(el => !processedElements.has(el));
 
     if (titleElements.length === 0) {
       perfTracker.end("BPTF Listings Processing");
@@ -200,7 +200,7 @@
   // Backpack.tf Popovers handler - Make popover titles clickable (optimized for hover)
   const processBPTFPopovers = () => {
     // Process all popovers, not just visible ones
-    const allPopovers = document.querySelectorAll(".popover");
+    const allPopovers = document.querySelectorAll('.popover');
 
     for (const popover of allPopovers) {
       if (processedPopovers.has(popover)) continue;
@@ -240,7 +240,7 @@
   const setupMutationObserver = () => {
     // Pre-compile relevant selectors for better performance
     const relevantSelectors = ".listing-title h5, .stats-header-title";
-    const popoverSelector = ".popover";
+    const popoverSelector = '.popover';
 
     const observer = new MutationObserver((mutations) => {
       let shouldProcess = false;
@@ -260,22 +260,18 @@
             }
 
             // Check for other relevant nodes
-            if (
-              node.matches &&
-              (node.matches(relevantSelectors) ||
-                node.querySelector(relevantSelectors + ", " + popoverSelector))
-            ) {
+            if (node.matches &&
+                (node.matches(relevantSelectors) ||
+                 node.querySelector(relevantSelectors + ", " + popoverSelector))) {
               shouldProcess = true;
             }
           }
         }
 
         // Check for class changes on popovers (for .in class)
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class" &&
-          mutation.target.classList.contains("popover")
-        ) {
+        if (mutation.type === 'attributes' &&
+            mutation.attributeName === 'class' &&
+            mutation.target.classList.contains('popover')) {
           hasPopoverChanges = true;
           shouldProcess = true;
         }
@@ -298,7 +294,7 @@
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ["class"], // Only watch class changes for popovers
+      attributeFilter: ['class'], // Only watch class changes for popovers
     });
 
     return observer;
@@ -316,8 +312,8 @@
     // Track feedback timeouts to prevent spam
     const feedbackTimeouts = new WeakMap();
 
-    document.addEventListener("click", async (e) => {
-      const target = e.target.closest(".tf-clickable-copy");
+    document.addEventListener('click', async (e) => {
+      const target = e.target.closest('.tf-clickable-copy');
       if (!target) return;
 
       e.preventDefault();
@@ -339,17 +335,13 @@
       const originalClasses = target.className;
 
       if (success) {
-        target.classList.add("tf-clickable-copy--success");
+        target.classList.add('tf-clickable-copy--success');
       } else {
-        target.classList.add("tf-clickable-copy--error");
+        target.classList.add('tf-clickable-copy--error');
       }
 
       const timeout = setTimeout(() => {
-        if (success) {
-          target.classList.remove('tf-clickable-copy--success');
-        } else {
-          target.classList.remove('tf-clickable-copy--error');
-        }
+        target.className = originalClasses;
         feedbackTimeouts.delete(target);
       }, 400);
       feedbackTimeouts.set(target, timeout);
