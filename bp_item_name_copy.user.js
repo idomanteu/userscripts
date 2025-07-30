@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Backpack.tf Item Name Copy
+// @name         Copy item names from Backpack.tf in one-click
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Add copy functionality for item names on backpack.tf - click titles, stats headers, and popover titles to copy item names
